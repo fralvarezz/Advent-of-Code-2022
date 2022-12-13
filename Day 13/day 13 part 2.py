@@ -1,15 +1,15 @@
 def compare(left, right):
     if isinstance(left, int) and isinstance(right, int):
-        if left < right: return -1
-        if left > right: return +1
+        if left < right: return 1
+        if left > right: return -1
         return 0
 
     else:
-        left = list([left]) if isinstance(left, int) else left
-        right = list([right]) if isinstance(right, int) else right
+        left = [left] if isinstance(left, int) else left
+        right = [right] if isinstance(right, int) else right
 
-        if len(left) == 0 and len(right) != 0: return -1
-        if len(right) == 0 and len(left) != 0: return 1
+        if len(left) == 0 and len(right) != 0: return 1
+        if len(right) == 0 and len(left) != 0: return -1
         if len(left) == 0 and len(right) == 0: return 0
     
     ret = compare(left[0], right[0])
@@ -73,10 +73,10 @@ for line in lines:
     #print(compare(l1,l2))
 
     #comp = compare(l1,l2)
-    if compare(l1,l2) == -1:
+    if compare(l1,l2) == 1:
         pos2 += 1
 
-    if compare(l1,l6) == -1:
+    if compare(l1,l6) == 1:
         pos6 += 1
     
 print(pos2 * (pos6+1))
